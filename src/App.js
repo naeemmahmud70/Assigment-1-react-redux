@@ -7,7 +7,7 @@ import PageNotFound from "./components/PageNotFound/PageNotFound";
 
 function App() {
   return (
-    <div className="">
+    <div className="bg-light">
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Login />} />

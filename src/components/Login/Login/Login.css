@@ -1,5 +1,54 @@
-.login-section{
+.login-section {
     height: 100vh;
-    /* display: flex;
-    align-items: center; */
+}
+
+#facebook {
+    font-size: 3.4rem;
+    font-weight: bolder;
+    color: #1877f2;
+}
+
+#about-facebook {
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+    line-height: 32px;
+    width: 500px;
+    margin-top: 20px;
+}
+
+.login-form {
+    background-color: #fff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    box-sizing: border-box;
+    width: 396px;
+    margin: 40px 0 0;
+    padding: 20px;
+}
+.login-input{
+    height: 50px;
+    line-height: 16px;
+    border-radius: 7px;
+}
+
+.login-btn {
+    background-color: #166fe5;
+    border-color: #365899;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    line-height: 48px;
+    padding: 0 16px;
+}
+
+.create-btn {
+    background-color: #42b72a;
+    border-radius: 6px;
+    font-size: 17px;
+    line-height: 30px;
+    padding: 0 16px;
+    cursor: pointer;
 }
