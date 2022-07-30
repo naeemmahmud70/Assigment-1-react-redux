@@ -2,6 +2,8 @@ import React from "react";
 import Modal from "react-modal";
 import "./Registration.css";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useSelector, useDispatch } from "react-redux";
 
 const customStyles = {
   content: {
@@ -18,6 +20,11 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 const Registration = ({ modalIsOpen, closeModal }) => {
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -33,7 +40,7 @@ const Registration = ({ modalIsOpen, closeModal }) => {
           </div>
         </div>
         <div className="p-3">
-          <form action="">
+          <form onSubmit={handleSubmit(onSubmit)} action="">
             <div className="row">
               <div className="col-md-6 form-group bg">
                 <input
@@ -165,7 +172,7 @@ const Registration = ({ modalIsOpen, closeModal }) => {
           </p>
         </div>
         <div className="text-center ">
-            <button className="sign-up-btn">Sign Up</button>
+          <button className="sign-up-btn">Sign Up</button>
         </div>
       </div>
     </Modal>

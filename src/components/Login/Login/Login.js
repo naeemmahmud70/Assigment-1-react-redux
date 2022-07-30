@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Registration from "../Registration/Registration";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { setLoginUser } from "../../Redux/Slices/loginUserSlice";
 
 const Login = () => {
+  const user = useSelector((state) => state.loginUser.user);
+  const dispatch = useDispatch();
+  console.log(user.password);
+
+  // Functions for modal
   const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
     setIsOpen(true);
@@ -15,19 +20,18 @@ const Login = () => {
     setIsOpen(false);
   }
 
-  const user = useSelector((state) => state.loginUser.user);
-  console.log(user);
-  const dispatch = useDispatch();
+  // Functions for react router
+  let navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  if (user.password) {
+    navigate(from, { replace: true });
+  }
+  // Submitting form
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     dispatch(setLoginUser(data));
-    console.log(data);
     reset();
   };
 
@@ -67,11 +71,9 @@ const Login = () => {
                 />
               </div>
               <div className="mt-3">
-                {/* <Link to="/home" className="w-100"> */}
                 <button type="submit" className="login-btn w-100 fw-bold">
                   Login
                 </button>
-                {/* </Link> */}
               </div>
             </form>
             <p className="text-primary text-center mt-3">Forgotten password?</p>
