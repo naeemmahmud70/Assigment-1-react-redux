@@ -1,0 +1,41 @@
+.text-color {
+    font-size: 2.4rem;
+    font-weight: bolder;
+    color: #1877f2;
+}
+
+.navbar-bg {
+    background-color: #1c1e21e3;
+    height: 65px;
+}
+
+.icon-image-size {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.navbar-input {
+    height: 40px;
+    width: 300px;
+    background-color: #555b61;
+    border-radius: 21px;
+    align-items: center;
+}
+
+
+
+.search-input[type="search"],
+textarea {
+    background-color: #555b61;
+}
+
+.search-input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder{
+    color: rgba(255, 255, 255, 0.674);
+    
+}
+
+.search-icon {
+    color: rgba(255, 255, 255, 0.674);
+}

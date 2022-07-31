@@ -1,0 +1,55 @@
+.cover-photo-btn {
+    position: relative;
+    right: 40px;
+    bottom: 60px;
+}
+
+.cover-photo-btn {
+    border: 0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.profile-header-bg {
+    background-color: #1c1e21e3;
+}
+
+.profile-picture-img {
+    border-radius: 50%;
+    border: 5px solid #1877F2;
+    padding: 3px;
+}
+
+.profile-picture-div {
+    position: relative;
+    bottom: 80px;
+}
+
+.friends-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* position: relative;
+    left: 30px; */
+}
+
+.add-story-btn {
+    background-color: #3578E5;
+    border: 0;
+    border-radius: 7px;
+    padding: 8px 12px;
+    color: white;
+    font-weight: bold;
+
+}
+
+.edit-profile-btn {
+  
+    border: 0;
+    border-radius: 7px;
+    padding: 8px 12px;
+    color: black;
+    font-weight: bold;
+
+}
