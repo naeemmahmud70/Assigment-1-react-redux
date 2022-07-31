@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ProfileHeader.css";
 import coverPicture from "../../../images/cover.jpg";
 import profilePicture from "../../../images/defaultProfilePhoto.jpg";
 import ProfileNavigationVar from "../ProfileNavigationVar/ProfileNavigationVar";
+import { useSelector } from "react-redux";
 
 const ProfileHeader = () => {
+  // const user = useSelector((state) => state.loginUser.user);
+  const loginUserdData = localStorage.getItem("loggedInUser");
+  const loginData = JSON.parse(loginUserdData);
   return (
     <div className="profile-header-bg">
       <div className="container">
@@ -27,7 +31,7 @@ const ProfileHeader = () => {
               <div className="d-flex align-items-center mx-4">
                 <div>
                   <div>
-                    <h2 className="text-white">Naeem Miah</h2>
+                    <h2 className="text-white">{loginData.fullName}</h2>
                     <h5 className="text-white">1.1k friends</h5>
                   </div>
                   <div>
@@ -56,7 +60,6 @@ const ProfileHeader = () => {
                       src={profilePicture}
                       alt=""
                     />
-                    
                   </div>
                 </div>
               </div>

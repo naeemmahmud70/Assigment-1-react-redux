@@ -5,7 +5,7 @@ import { Navigate, useLocation } from "react-router-dom";
 const RequireAuth = ({ children }) => {
   const user = useSelector((state) => state.loginUser.user);
   console.log("from auth", user);
-  const loggedInUser = sessionStorage.getItem("loggedInUser");
+  const loggedInUser = localStorage.getItem("loggedInUser");
   const loginUser = JSON.parse(loggedInUser);
   const location = useLocation();
 

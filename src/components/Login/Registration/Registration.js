@@ -46,11 +46,11 @@ const Registration = ({ modalIsOpen, closeModal }) => {
   useEffect(() => {
     // console.log("registered", registeredUser);
     // console.log("allRegistered", allRegisteredUser);
-    sessionStorage.setItem(
+    localStorage.setItem(
       "allRegisteredData",
       JSON.stringify(allRegisteredUser)
     );
-  }, [registeredUser]);
+  }, [allRegisteredUser]);
 
   return (
     <Modal

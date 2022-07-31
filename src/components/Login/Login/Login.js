@@ -33,14 +33,26 @@ const Login = () => {
   // Submitting form
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    dispatch(setLoginUser(data));
-    sessionStorage.setItem("loggedInUser", JSON.stringify(data));
+    const registeredData = localStorage.getItem("allRegisteredData");
+    const allRegisterData = JSON.parse(registeredData);
+
+    const isThisUserAvaibale = allRegisterData.find(
+      (registerData) => data.password === registerData.password
+    );
+
+    if (isThisUserAvaibale) {
+      dispatch(setLoginUser(isThisUserAvaibale));
+      localStorage.setItem("loggedInUser", JSON.stringify(isThisUserAvaibale));
+    } else {
+      alert("Please Sign Up First");
+    }
+
     // reset();
   };
 
   useEffect(() => {
-    const allRegisteredData = sessionStorage.getItem("allRegisteredData");
-    console.log("allData", JSON.parse(allRegisteredData));
+    const allRegisteredData = localStorage.getItem("allRegisteredData");
+    // console.log("allData", JSON.parse(allRegisteredData));
   }, [allRegisteredUsers]);
 
   return (

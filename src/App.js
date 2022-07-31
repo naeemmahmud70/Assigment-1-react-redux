@@ -17,19 +17,19 @@ function App() {
             path="/"
             element={
               <RequireAuth>
-                <Home></Home>
+                <Profile />
               </RequireAuth>
             }
           />
           <Route
-            path="/home"
+            path="/profile"
             element={
               <RequireAuth>
-                <Home></Home>
+                <Profile />
               </RequireAuth>
             }
           />
-          <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
