@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Modal from "react-modal";
 import "./Registration.css";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
+import { setRegisterUser } from "../../Redux/Slices/registerUserSlice";
+import { setAllRegisterUser } from "../../Redux/Slices/allregisteredUsersSlice";
 
 const customStyles = {
   content: {
@@ -20,21 +22,36 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 const Registration = ({ modalIsOpen, closeModal }) => {
+  const registeredUser = useSelector((state) => state.registerUser.user);
+  const allRegisteredUser = useSelector((state) => state.allRegisterUser.users);
+  const dispatch = useDispatch();
+
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     const registrationData = {
       fullName: data.fullName,
       surName: data.surName,
       mobileOrEmail: data.mobileOrEmail,
-      password: data.password,
+      password: data.newPassword,
       dayOfDOB: data.dayOfDOB,
       monthOfDOB: data.monthOfDOB,
       yearOfDOB: data.yearOfDOB,
       gender: data.gender,
     };
-    console.log(registrationData);
-    reset();
+    dispatch(setRegisterUser(registrationData));
+    dispatch(setAllRegisterUser([...allRegisteredUser, registrationData]));
   };
+
+  // storing all registered data in the session storage
+  useEffect(() => {
+    // console.log("registered", registeredUser);
+    // console.log("allRegistered", allRegisteredUser);
+    sessionStorage.setItem(
+      "allRegisteredData",
+      JSON.stringify(allRegisteredUser)
+    );
+  }, [registeredUser]);
+
   return (
     <Modal
       isOpen={modalIsOpen}

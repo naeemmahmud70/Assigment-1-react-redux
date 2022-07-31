@@ -12,7 +12,7 @@ function App() {
     <div className="">
       <BrowserRouter>
         <Routes>
-          {/* <Route
+          <Route
             exact
             path="/"
             element={
@@ -22,16 +22,14 @@ function App() {
             }
           />
           <Route
-            exact
             path="/home"
             element={
               <RequireAuth>
                 <Home></Home>
               </RequireAuth>
             }
-          /> */}
-          {/* <Route exact path="/" element={<Home />} /> */}
-          <Route exact path="/" element={<Profile />} />
+          />
+          <Route exact path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

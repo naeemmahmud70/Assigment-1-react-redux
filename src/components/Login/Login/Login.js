@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import Registration from "../Registration/Registration";
@@ -8,8 +8,10 @@ import { setLoginUser } from "../../Redux/Slices/loginUserSlice";
 
 const Login = () => {
   const user = useSelector((state) => state.loginUser.user);
+  const allRegisteredUsers = useSelector(
+    (state) => state.allRegisterUser.users
+  );
   const dispatch = useDispatch();
-  console.log(user.password);
 
   // Functions for modal
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -32,8 +34,14 @@ const Login = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     dispatch(setLoginUser(data));
-    reset();
+    sessionStorage.setItem("loggedInUser", JSON.stringify(data));
+    // reset();
   };
+
+  useEffect(() => {
+    const allRegisteredData = sessionStorage.getItem("allRegisteredData");
+    console.log("allData", JSON.parse(allRegisteredData));
+  }, [allRegisteredUsers]);
 
   return (
     <div className="container login-section d-flex align-items-center">
