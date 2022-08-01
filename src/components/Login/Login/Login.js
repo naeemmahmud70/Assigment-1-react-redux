@@ -7,10 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { setLoginUser } from "../../Redux/Slices/loginUserSlice";
 
 const Login = () => {
-  const user = useSelector((state) => state.loginUser.user);
-  const allRegisteredUsers = useSelector(
-    (state) => state.allRegisterUser.users
-  );
   const dispatch = useDispatch();
 
   // Functions for modal
@@ -27,33 +23,25 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  if (user.password) {
-    navigate(from, { replace: true });
-  }
   // Submitting form
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    const registeredData = localStorage.getItem("allRegisteredData");
+    const registeredData = localStorage.getItem("newRegisteredData");
     const allRegisterData = JSON.parse(registeredData);
+    console.log(allRegisterData);
 
-    const isThisUserAvaibale = allRegisterData.find(
-      (registerData) => data.password === registerData.password
-    );
-
-    if (isThisUserAvaibale) {
-      dispatch(setLoginUser(isThisUserAvaibale));
-      localStorage.setItem("loggedInUser", JSON.stringify(isThisUserAvaibale));
+    if (data.password === allRegisterData.password) {
+      dispatch(setLoginUser(allRegisterData));
+      console.log(data);
+      localStorage.setItem("loggedInUser", JSON.stringify(allRegisterData));
+      if (data.password) {
+        navigate(from, { replace: true });
+      }
     } else {
       alert("Please Sign Up First");
     }
-
-    // reset();
+    reset();
   };
-
-  useEffect(() => {
-    const allRegisteredData = localStorage.getItem("allRegisteredData");
-    // console.log("allData", JSON.parse(allRegisteredData));
-  }, [allRegisteredUsers]);
 
   return (
     <div className="container login-section d-flex align-items-center">
@@ -72,12 +60,12 @@ const Login = () => {
             <form onSubmit={handleSubmit(onSubmit)} action="">
               <div className="form-group">
                 <input
-                  name="emailOrPhone"
+                  name="mobileOrEmail"
                   placeholder="Email adress or phone number"
                   className="form-control login-input"
                   type="text"
                   required
-                  {...register("emailOrPhone")}
+                  {...register("mobileOrEmail")}
                 />
               </div>
               <div className="form-group mt-3">

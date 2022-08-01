@@ -30,8 +30,6 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    /* position: relative;
-    left: 30px; */
 }
 
 .add-story-btn {
@@ -49,7 +47,8 @@
     border: 0;
     border-radius: 7px;
     padding: 8px 12px;
-    color: black;
+    color: white;
     font-weight: bold;
+    background-color: #555b61;
 
 }

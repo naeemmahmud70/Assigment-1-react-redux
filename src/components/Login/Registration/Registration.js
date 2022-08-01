@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Modal from "react-modal";
 import "./Registration.css";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { setRegisterUser } from "../../Redux/Slices/registerUserSlice";
 import { setAllRegisterUser } from "../../Redux/Slices/allregisteredUsersSlice";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const customStyles = {
   content: {
@@ -22,11 +23,15 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 const Registration = ({ modalIsOpen, closeModal }) => {
-  const registeredUser = useSelector((state) => state.registerUser.user);
-  const allRegisteredUser = useSelector((state) => state.allRegisterUser.users);
-  const dispatch = useDispatch();
+  // const registeredUser = useSelector((state) => state.registerUser.user);
+  // const allRegisteredUser = useSelector((state) => state.allRegisterUser.users);
+
+  let navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const { register, handleSubmit, reset } = useForm();
+
   const onSubmit = (data) => {
     const registrationData = {
       fullName: data.fullName,
@@ -38,19 +43,15 @@ const Registration = ({ modalIsOpen, closeModal }) => {
       yearOfDOB: data.yearOfDOB,
       gender: data.gender,
     };
-    dispatch(setRegisterUser(registrationData));
-    dispatch(setAllRegisterUser([...allRegisteredUser, registrationData]));
-  };
 
-  // storing all registered data in the session storage
-  useEffect(() => {
-    // console.log("registered", registeredUser);
-    // console.log("allRegistered", allRegisteredUser);
-    localStorage.setItem(
-      "allRegisteredData",
-      JSON.stringify(allRegisteredUser)
-    );
-  }, [allRegisteredUser]);
+    localStorage.setItem("newRegisteredData", JSON.stringify(registrationData));
+
+    if (data.newPassword && data.mobileOrEmail) {
+      localStorage.setItem("loggedInUser", JSON.stringify(registrationData));
+      navigate(from, { replace: true });
+    }
+    reset();
+  };
 
   return (
     <Modal

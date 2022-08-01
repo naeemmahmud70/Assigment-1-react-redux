@@ -1,0 +1,15 @@
+.edit-bio-btn {
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    background-color: #555b61;
+    padding: 8px 12px;
+}
+
+#profile-intro-bg {
+    background: #393c40e6;
+    border-radius: 7px;
+}
+.details-text-color{
+    color: rgba(255, 255, 255, 0.869);
+}

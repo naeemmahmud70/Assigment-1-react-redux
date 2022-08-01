@@ -1,0 +1,10 @@
+.post-profile-img {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border: 4px solid #1877F2;
+}
+.post-card{
+    border-top: 1px solid rgba(128, 128, 128, 0.876);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.841);
+}

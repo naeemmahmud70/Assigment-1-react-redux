@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const ProfileNavigationVar = () => {
   return (
-    <nav className="d-flex justify-content-between border-top">
+    <nav className="d-flex justify-content-between border-top border-secondary">
       <div className="my-3">
         <Link className="nav-item mx-3" to="posts">
           Posts

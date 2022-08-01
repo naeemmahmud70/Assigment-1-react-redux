@@ -1,11 +1,12 @@
 import React from "react";
 import Navbar from "./Navbar/Navbar";
+import NewsFeed from "./NewsFeed/NewsFeed";
 
 const Home = () => {
   return (
-    <div>
+    <div >
       <Navbar></Navbar>
-      <h1>This is home page.</h1>
+      <NewsFeed></NewsFeed>
     </div>
   );
 };

@@ -1,0 +1,47 @@
+.profile-posts-bg {
+    background: #393c40e6;
+    border-radius: 7px;
+}
+
+.border-round-picture {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.image-width {
+    width: 8%;
+}
+
+.input-width {
+    width: 92%;
+}
+
+.upload-input {
+    border: 0;
+    border-radius: 15px;
+    height: 40px;
+}
+
+.upload-input[type="upload"],
+textarea {
+    background-color: #555b61;
+    padding: 10px;
+}
+
+.upload-input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.674);
+
+}
+
+.posts-btn {
+    border: 0;
+    background: none;
+    color: rgba(255, 255, 255, 0.741);
+    font-weight: bold;
+}
+.top-border{
+    border-top: 1px solid rgba(255, 255, 255, 0.245);
+    margin-top: 10px;
+}
