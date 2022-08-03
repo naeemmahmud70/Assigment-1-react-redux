@@ -3,10 +3,9 @@ import Modal from "react-modal";
 import "./Registration.css";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useSelector, useDispatch } from "react-redux";
-import { setRegisterUser } from "../../Redux/Slices/registerUserSlice";
-import { setAllRegisterUser } from "../../Redux/Slices/allregisteredUsersSlice";
+import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import { setRegisterUser } from "../../Redux/Slices/registerUserSlice";
 
 const customStyles = {
   content: {
@@ -23,9 +22,7 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 const Registration = ({ modalIsOpen, closeModal }) => {
-  // const registeredUser = useSelector((state) => state.registerUser.user);
-  // const allRegisteredUser = useSelector((state) => state.allRegisterUser.users);
-
+  const dispatch = useDispatch();
   let navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -43,7 +40,7 @@ const Registration = ({ modalIsOpen, closeModal }) => {
       yearOfDOB: data.yearOfDOB,
       gender: data.gender,
     };
-
+    dispatch(setRegisterUser(setRegisterUser));
     localStorage.setItem("newRegisteredData", JSON.stringify(registrationData));
 
     if (data.newPassword && data.mobileOrEmail) {

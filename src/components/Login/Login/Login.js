@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import Registration from "../Registration/Registration";
 import { useForm } from "react-hook-form";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setLoginUser } from "../../Redux/Slices/loginUserSlice";
 
 const Login = () => {
@@ -28,11 +28,9 @@ const Login = () => {
   const onSubmit = (data) => {
     const registeredData = localStorage.getItem("newRegisteredData");
     const allRegisterData = JSON.parse(registeredData);
-    console.log(allRegisterData);
 
     if (data.password === allRegisterData.password) {
       dispatch(setLoginUser(allRegisterData));
-      console.log(data);
       localStorage.setItem("loggedInUser", JSON.stringify(allRegisterData));
       if (data.password) {
         navigate(from, { replace: true });
@@ -55,7 +53,7 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="col-md-5">
+        <div className="col-md-5 d-flex justify-content-center">
           <div className="login-form">
             <form onSubmit={handleSubmit(onSubmit)} action="">
               <div className="form-group">
@@ -103,7 +101,7 @@ const Login = () => {
               </div>
             </div>
           </div>
-          <p className="text-center mt-4">
+          <p className=" mt-4">
             <strong>Create a page</strong> for a celebraty, brands or buisiness.
           </p>
         </div>

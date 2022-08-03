@@ -13,7 +13,6 @@
     font-size: 28px;
     font-weight: normal;
     line-height: 32px;
-    width: 500px;
     margin-top: 20px;
 }
 
@@ -27,7 +26,8 @@
     margin: 40px 0 0;
     padding: 20px;
 }
-.login-input{
+
+.login-input {
     height: 50px;
     line-height: 16px;
     border-radius: 7px;
@@ -51,4 +51,14 @@
     line-height: 30px;
     padding: 0 16px;
     cursor: pointer;
+}
+
+
+@media only screen and (max-width: 520px) {
+    #facebook {
+        text-align: center;
+    }
+    #about-facebook {
+        text-align: center;
+    }
 }
