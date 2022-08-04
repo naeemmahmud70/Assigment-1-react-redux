@@ -1,7 +1,7 @@
-#Assignment-1 (Facebook login, registration, profile and home page clone)
+#Assignment-1 (Facebook login, registration, profile and home page clone with react and redux)
 
-### `Deployed Link :` [Website](https://algorizin777.netlify.app/)
-### `GitHub Link :` [GitHub](https://algorizin777.netlify.app/)
+### `Deployed Link :` [Website](https://facebook-clone-assignment.netlify.app)
+### `GitHub Link :` [GitHub](https://github.com/naeemmahmud70/Assigment-1-react-redux)
 
 ## Login page
 ![alt text](./src/images/login.png)
